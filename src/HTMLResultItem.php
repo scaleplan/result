@@ -2,12 +2,12 @@
 
 namespace avtomon;
 
-class HTMLResultItem
+class HTMLResultItem extends AbstractResult
 {
     /**
      * @var string
      */
-    private $result = '';
+    protected $result = '';
 
     /**
      * HTMLResultItem constructor
@@ -16,7 +16,7 @@ class HTMLResultItem
      */
     public function __construct(string $result)
     {
-        $this->result = $result;
+        $this->setResult($result);
     }
 
     public function getResult(): string

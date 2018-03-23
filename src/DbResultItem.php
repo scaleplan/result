@@ -6,12 +6,12 @@ class DbResultItemException extends \Exception
 {
 }
 
-class DbResultItem implements ResultInterface
+class DbResultItem extends AbstractResult implements ResultInterface
 {
     /**
      * @var array
      */
-    private $result = [];
+    protected $result = [];
 
     public function __construct(array $result, string $prefix = '')
     {
@@ -45,15 +45,12 @@ class DbResultItem implements ResultInterface
 
             };
 
-            foreach ($result as &$record) {
-                foreach ($record as $key => &$value) {
+            foreach ($result as $record) {
+                foreach ($record as $key => $value) {
                     $record["$prefix_$key"] = $value;
+                    unset($record[$key]);
                 }
-
-                unset($value);
             }
-
-            unset($record);
         }
 
         $this->result = $result;
@@ -96,7 +93,7 @@ class DbResultItem implements ResultInterface
      */
     public function getResultId()
     {
-        if (!isset($this->result[0]['id']) && !is_null($this->result[0]['id'])) {
+        if (!isset($this->result[0]) && !array_key_exists('id', $this->result[0])) {
             throw new DbResultItemException('Первая запись результа не существует или не содержит поля id');
         }
 
