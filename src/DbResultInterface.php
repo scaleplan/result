@@ -2,25 +2,23 @@
 
 namespace avtomon;
 
-interface ResultInterface
+interface DbResultInterface
 {
     public function getResult();
-
-    public function setResult($result);
 
     /**
      * Get result as array
      *
      * @return mixed
      */
-    public function getArrayResult(): array;
+    public function getArrayResult(): ?array;
 
     /**
      * Get result as JSON
      *
      * @return mixed
      */
-    public function getJsonResult(): string;
+    public function getJsonResult(): ?string;
 
     /**
      * If result is array, returns first element of result array

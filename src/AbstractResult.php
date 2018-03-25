@@ -22,7 +22,17 @@ abstract class AbstractResult
 
     public abstract function getResult();
 
-    public abstract function setResult($result);
+    //public abstract function setResult($result);
 
-    public abstract function getStringResult(): string;
+    public abstract function getStringResult(): ?string;
+
+    /**
+     * Вернуть результат в виде строки
+     *
+     * @return string
+     */
+    public function __toString(): ?string
+    {
+        return $this->getStringResult();
+    }
 }

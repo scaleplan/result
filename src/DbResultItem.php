@@ -2,18 +2,18 @@
 
 namespace avtomon;
 
-class DbResultItemException extends \Exception
+class DbResultItemException extends CustomException
 {
 }
 
-class DbResultItem extends AbstractResult implements ResultInterface
+class DbResultItem extends AbstractResult implements DbResultInterface
 {
     /**
-     * @var array
+     * @var ?array
      */
     protected $result = [];
 
-    public function __construct(array $result, string $prefix = '')
+    public function __construct(?array $result, string $prefix = '')
     {
         $this->setResult($result, $prefix);
     }
@@ -23,7 +23,7 @@ class DbResultItem extends AbstractResult implements ResultInterface
      *
      * @return array
      */
-    public function getResult(): array
+    public function getResult(): ?array
     {
         return $this->getArrayResult();
     }
@@ -34,17 +34,18 @@ class DbResultItem extends AbstractResult implements ResultInterface
      * @param $result - результат
      * @param string $prefix - префикс полей результата
      */
-    public function setResult(array $result, string $prefix = ''): void
+    public function setResult(?array $result, string $prefix = ''): void
     {
-        if (empty($result[0]) ||  !is_array($result[0])) {
+        if (is_null($result)) {
+            $this->result = $result;
+            return;
+        }
+
+        if (!empty($result[0]) &&  !is_array($result[0])) {
             throw new DbResultItemException('Входной массив не является результатом запроса к РСУБД');
         }
 
         if ($prefix) {
-            $addPrefix = function (array &$record) use ($prefix) {
-
-            };
-
             foreach ($result as $record) {
                 foreach ($record as $key => $value) {
                     $record["$prefix_$key"] = $value;
@@ -61,7 +62,7 @@ class DbResultItem extends AbstractResult implements ResultInterface
      *
      * @return array
      */
-    public function getArrayResult(): array
+    public function getArrayResult(): ?array
     {
         return $this->result;
     }
@@ -73,6 +74,10 @@ class DbResultItem extends AbstractResult implements ResultInterface
      */
     public function getJsonResult(): string
     {
+        if (is_null($this->result)) {
+            return $this->result;
+        }
+
         return json_encode($this->getResult(), JSON_UNESCAPED_UNICODE);
     }
 
@@ -120,18 +125,8 @@ class DbResultItem extends AbstractResult implements ResultInterface
      *
      * @return string
      */
-    public function getStringResult(): string
+    public function getStringResult(): ?string
     {
         return $this->getJsonResult();
-    }
-
-    /**
-     * Вернуть результат в виде строки
-     *
-     * @return string
-     */
-    public function __toString()
-    {
-        return $this->getStringResult();
     }
 }
