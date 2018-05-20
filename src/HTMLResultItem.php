@@ -19,6 +19,11 @@ class HTMLResultItem extends AbstractResult
         $this->setResult($result);
     }
 
+    /**
+     * Get raw result
+     *
+     * @return null|string
+     */
     public function getResult(): ?string
     {
         return $this->getStringResult();

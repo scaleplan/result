@@ -20,14 +20,24 @@ abstract class AbstractResult
         $this->setResult($result);
     }
 
+    /**
+     * Получение результата
+     *
+     * @return mixed
+     */
     public abstract function getResult();
 
     //public abstract function setResult($result);
 
+    /**
+     * Получение результата в виде строки
+     *
+     * @return null|string
+     */
     public abstract function getStringResult(): ?string;
 
     /**
-     * Вернуть результат в виде строки
+     * Вернуть объект результата в виде строки
      *
      * @return string
      */
