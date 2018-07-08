@@ -1,7 +1,6 @@
 {
     "name": "avtomon/ResultItem",
     "description": "Interface and classes to unification response of data requests",
-    "type": "project",
     "minimum-stability": "dev",
     "config": {
         "process-timeout": 1800
