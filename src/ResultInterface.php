@@ -3,66 +3,52 @@
 namespace avtomon;
 
 /**
- * Базовый класс результата
+ * Интерфейс общий для всех типов результатов
  *
- * Class AbstractResult
+ * Interface ResultInterface
  * @package avtomon
  */
-abstract class AbstractResult implements ResultInterface
+interface ResultInterface
 {
-    /**
-     * @var mixed
-     */
-    protected $result;
-
     /**
      * Получение результата
      *
      * @return mixed
      */
-    public function getResult()
-    {
-        return $this->result;
-    }
+    public function getResult();
 
     /**
      * Получение результата в виде строки
      *
      * @return null|string
      */
-    abstract public function getStringResult(): ?string;
+    public function getStringResult(): ?string;
 
     /**
      * Возвратить результат в виде массива
      *
      * @return array|null
      */
-    abstract public function getArrayResult(): ?array;
+    public function getArrayResult(): ?array;
 
     /**
      * Возвратить результат в виде объекта
      *
      * @return null|\object
      */
-    abstract public function getObjectResult(): ?object;
+    public function getObjectResult(): ?object;
 
     /**
      * Вернуть объект результата в виде строки
      *
      * @return string
      */
-    public function __toString(): string
-    {
-        return (string) $this->getStringResult();
-    }
+    public function __toString(): ?string;
 
     /**
      * Булева интерпретация результата
      *
      * @return bool
      */
-    public function getBoolResult(): bool
-    {
-        return (bool) $this->result;
-    }
+    public function getBoolResult(): bool;
 }

@@ -2,6 +2,12 @@
 
 namespace avtomon;
 
+/**
+ * Интерфейс результатов запросов к БД
+ *
+ * Interface DbResultInterface
+ * @package avtomon
+ */
 interface DbResultInterface
 {
     public function getResult();

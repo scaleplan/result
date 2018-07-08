@@ -2,50 +2,61 @@
 
 namespace avtomon;
 
+/**
+ * Класс результатов в виде HTML-страниц
+ *
+ * Class HTMLResultItem
+ * @package avtomon
+ */
 class HTMLResultItem extends AbstractResult
 {
     /**
-     * @var ?string
-     */
-    protected $result = '';
-
-    /**
-     * HTMLResultItem constructor
+     * Конструктор
      *
-     * @param string $result
+     * @param mixed $result
      */
-    public function __construct(?string $result)
+    public function __construct($result)
     {
         $this->setResult($result);
     }
 
     /**
-     * Get raw result
+     * Установить значение результата
      *
-     * @return null|string
+     * @param $result - значение результата
      */
-    public function getResult(): ?string
+    public function setResult($result): void
     {
-        return $this->getStringResult();
+        $this->result = $result;
     }
 
     /**
      * Get string result
      *
-     * @return string
+     * @return null|string
      */
     public function getStringResult(): ?string
     {
-        return $this->result;
+        return $this->result !== null ? (string) $this->result : null;
     }
 
     /**
-     * Set string result
+     * Возвратить результат в виде массива
      *
-     * @param string $result
+     * @return null|array
      */
-    public function setResult(?string $result)
+    public function getArrayResult(): ?array
     {
-        $this->result = $result;
+        return null;
+    }
+
+    /**
+     * Возвратить результат в виде объекта
+     *
+     * @return null|object
+     */
+    public function getObjectResult(): ?object
+    {
+        return null;
     }
 }
