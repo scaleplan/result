@@ -105,6 +105,8 @@ class DbResultItem extends ArrayResultItem
      */
     public function getObjectResult(): ?object
     {
-        return (object) $this->getFirstResult();
+        $result = $this->getFirstResult();
+
+        return $result === null ? null : (object) $this->getFirstResult();
     }
 }

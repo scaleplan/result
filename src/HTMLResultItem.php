@@ -3,6 +3,16 @@
 namespace avtomon;
 
 /**
+ * Класс ошибок
+ *
+ * Class HTMLResultItemException
+ * @package avtomon
+ */
+class HTMLResultItemException extends CustomException
+{
+}
+
+/**
  * Класс результатов в виде HTML-страниц
  *
  * Class HTMLResultItem
@@ -53,7 +63,7 @@ class HTMLResultItem extends AbstractResult
     /**
      * Возвратить результат в виде объекта
      *
-     * @return null|object
+     * @return null|\object
      */
     public function getObjectResult(): ?object
     {

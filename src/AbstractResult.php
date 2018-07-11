@@ -8,7 +8,7 @@ namespace avtomon;
  * Class AbstractResult
  * @package avtomon
  */
-abstract class AbstractResult implements ResultInterface
+abstract class AbstractResult implements IResultInterface
 {
     /**
      * @var mixed

@@ -1,39 +1,24 @@
 <small>avtomon</small>
 
-AbstractResult
-==============
+IResultInterface
+================
 
-Базовый класс результата
+Интерфейс общий для всех типов результатов
 
 Описание
 -----------
 
-Class AbstractResult
+Interface IResultInterface
 
 Сигнатура
 ---------
 
-- **abstract class**.
-- Реализует интерфейс [`IResultInterface`](../avtomon/IResultInterface.md).
-
-Свойства
-----------
-
-abstract class устанавливает следующие свойства:
-
-- [`$result`](#$result)
-
-### `$result` <a name="result"></a>
-
-#### Сигнатура
-
-- **protected** property.
-- Значение `mixed`.
+- **interface**.
 
 Методы
 -------
 
-Методы класса abstract class:
+Методы класса interface:
 
 - [`getResult()`](#getResult) &mdash; Получение результата
 - [`getStringResult()`](#getStringResult) &mdash; Получение результата в виде строки
@@ -57,7 +42,7 @@ abstract class устанавливает следующие свойства:
 
 #### Сигнатура
 
-- **public abstract** method.
+- **public** method.
 - Может возвращать одно из следующих значений:
     - `null`
     - `string`
@@ -68,7 +53,7 @@ abstract class устанавливает следующие свойства:
 
 #### Сигнатура
 
-- **public abstract** method.
+- **public** method.
 - Может возвращать одно из следующих значений:
     - `array`
     - `null`
@@ -79,7 +64,7 @@ abstract class устанавливает следующие свойства:
 
 #### Сигнатура
 
-- **public abstract** method.
+- **public** method.
 - Может возвращать одно из следующих значений:
     - `null`
     - `object`

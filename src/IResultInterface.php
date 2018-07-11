@@ -5,10 +5,10 @@ namespace avtomon;
 /**
  * Интерфейс общий для всех типов результатов
  *
- * Interface ResultInterface
+ * Interface IResultInterface
  * @package avtomon
  */
-interface ResultInterface
+interface IResultInterface
 {
     /**
      * Получение результата

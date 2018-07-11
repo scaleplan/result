@@ -96,6 +96,6 @@ class ArrayResultItem extends AbstractResult
      */
     public function getObjectResult(): ?object
     {
-        return (object) $this->result;
+        return $this->result === null ? null : (object) $this->result;
     }
 }

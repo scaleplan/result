@@ -5,10 +5,10 @@ namespace avtomon;
 /**
  * Интерфейс результатов запросов к БД
  *
- * Interface DbResultInterface
+ * Interface IDbResultInterface
  * @package avtomon
  */
-interface DbResultInterface
+interface IDbResultInterface
 {
     public function getResult();
 
