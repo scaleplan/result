@@ -36,8 +36,8 @@ Class DbResultItem
 
 - **public** method.
 - Может принимать следующий параметр(ы):
-    - `$result` (`array`|`null`) &mdash; - результат
-    - `$prefix` (`string`) &mdash; - префикс полей результата
+    - `$result` (`array`|`null`) - результат
+    - `$prefix` (`string`) - префикс полей результата
 - Ничего не возвращает.
 - Выбрасывает одно из следующих исключений:
     - [`avtomon\DbResultItemException`](../avtomon/DbResultItemException.md)
@@ -50,8 +50,8 @@ Class DbResultItem
 
 - **public** method.
 - Может принимать следующий параметр(ы):
-    - `$result` (`array`|`null`) &mdash; - результат
-    - `$prefix` (`string`) &mdash; - префикс полей результата
+    - `$result` (`array`|`null`) - результат
+    - `$prefix` (`string`) - префикс полей результата
 - Ничего не возвращает.
 - Выбрасывает одно из следующих исключений:
     - [`avtomon\DbResultItemException`](../avtomon/DbResultItemException.md)

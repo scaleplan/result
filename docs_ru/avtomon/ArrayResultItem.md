@@ -1,14 +1,14 @@
 <small>avtomon</small>
 
-HTMLResultItem
-==============
+ArrayResultItem
+===============
 
-Класс результатов в виде HTML-страниц
+Класс результат типа Массив
 
 Описание
 -----------
 
-Class HTMLResultItem
+Class ArrayResultItem
 
 Сигнатура
 ---------
@@ -22,9 +22,11 @@ Class HTMLResultItem
 Методы класса class:
 
 - [`__construct()`](#__construct) &mdash; Конструктор
-- [`setResult()`](#setResult) &mdash; Установить значение результата
-- [`getStringResult()`](#getStringResult) &mdash; Get string result
-- [`getArrayResult()`](#getArrayResult) &mdash; Возвратить результат в виде массива
+- [`getResult()`](#getResult) &mdash; Геттер для результата
+- [`setResult()`](#setResult) &mdash; Установить результат
+- [`getArrayResult()`](#getArrayResult) &mdash; Вернуть результат в виде массива
+- [`getJsonResult()`](#getJsonResult) &mdash; Вернуть результат в виде JSON
+- [`getStringResult()`](#getStringResult) &mdash; Вернуть результат в виде строки
 - [`getObjectResult()`](#getObjectResult) &mdash; Возвратить результат в виде объекта
 
 ### `__construct()` <a name="__construct"></a>
@@ -35,23 +37,43 @@ Class HTMLResultItem
 
 - **public** method.
 - Может принимать следующий параметр(ы):
-    - `$result` (`mixed`)
+    - `$result` (`array`|`null`) - результат
 - Ничего не возвращает.
+
+### `getResult()` <a name="getResult"></a>
+
+Геттер для результата
+
+#### Сигнатура
+
+- **public** method.
+- Возвращает `mixed` value.
 
 ### `setResult()` <a name="setResult"></a>
 
-Установить значение результата
+Установить результат
 
 #### Сигнатура
 
 - **public** method.
 - Может принимать следующий параметр(ы):
-    - `$result` &mdash; - значение результата
+    - `$result` (`array`|`null`) - результат
 - Ничего не возвращает.
 
-### `getStringResult()` <a name="getStringResult"></a>
+### `getArrayResult()` <a name="getArrayResult"></a>
 
-Get string result
+Вернуть результат в виде массива
+
+#### Сигнатура
+
+- **public** method.
+- Может возвращать одно из следующих значений:
+    - `array`
+    - `null`
+
+### `getJsonResult()` <a name="getJsonResult"></a>
+
+Вернуть результат в виде JSON
 
 #### Сигнатура
 
@@ -60,16 +82,16 @@ Get string result
     - `null`
     - `string`
 
-### `getArrayResult()` <a name="getArrayResult"></a>
+### `getStringResult()` <a name="getStringResult"></a>
 
-Возвратить результат в виде массива
+Вернуть результат в виде строки
 
 #### Сигнатура
 
 - **public** method.
 - Может возвращать одно из следующих значений:
-    - `array`
     - `null`
+    - `string`
 
 ### `getObjectResult()` <a name="getObjectResult"></a>
 

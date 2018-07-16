@@ -1,6 +1,6 @@
 # ResultItem
 
-Обобщение типов результата
+Synthesis of result types
 
-[Документация](docs)
+[Documentation](docs_en)
 
