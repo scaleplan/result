@@ -1,11 +1,6 @@
 {
-    "name": "avtomon/ResultItem",
+    "name": "scaleplan/result",
     "description": "Interface and classes to unification response of data requests",
-    "type": "project",
-    "minimum-stability": "dev",
-    "config": {
-        "process-timeout": 1800
-    },
     "autoload": {
         "psr-4": {
             "avtomon\\": "src/"
