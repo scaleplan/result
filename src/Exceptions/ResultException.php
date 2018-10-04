@@ -2,6 +2,11 @@
 
 namespace Scaleplan\Result\Exceptions;
 
+/**
+ * Class ResultException
+ *
+ * @package Scaleplan\Result\Exceptions
+ */
 class ResultException extends \Exception
 {
     public const MESSAGE = 'Result error.';
