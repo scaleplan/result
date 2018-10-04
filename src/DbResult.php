@@ -1,24 +1,17 @@
 <?php
 
-namespace avtomon;
+namespace Scaleplan\Result;
 
-/**
- * Класс ошибок
- *
- * Class DbResultItemException
- * @package avtomon
- */
-class DbResultItemException extends CustomException
-{
-}
+use Scaleplan\Result\Exceptions\ResultException;
 
 /**
  * Класс результата запроса к БД
  *
- * Class DbResultItem
- * @package avtomon
+ * Class DbResult
+ *
+ * @package Scaleplan\Result
  */
-class DbResultItem extends ArrayResultItem
+class DbResult extends ArrayResult
 {
     /**
      * Конструктор
@@ -26,7 +19,7 @@ class DbResultItem extends ArrayResultItem
      * @param array|null $result - результат
      * @param string $prefix - префикс полей результата
      *
-     * @throws DbResultItemException
+     * @throws ResultException
      */
     public function __construct(?array $result, string $prefix = '')
     {
@@ -39,7 +32,7 @@ class DbResultItem extends ArrayResultItem
      * @param $result - результат
      * @param string $prefix - префикс полей результата
      *
-     * @throws DbResultItemException
+     * @throws ResultException
      */
     public function setResult(?array $result, string $prefix = ''): void
     {
@@ -49,7 +42,7 @@ class DbResultItem extends ArrayResultItem
         }
 
         if (!empty($result[0]) &&  !\is_array($result[0])) {
-            throw new DbResultItemException('Входной массив не является результатом запроса к РСУБД');
+            throw new ResultException('Входной массив не является результатом запроса к РСУБД');
         }
 
         if ($prefix) {

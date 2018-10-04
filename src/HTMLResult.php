@@ -1,24 +1,15 @@
 <?php
 
-namespace avtomon;
-
-/**
- * Класс ошибок
- *
- * Class HTMLResultItemException
- * @package avtomon
- */
-class HTMLResultItemException extends CustomException
-{
-}
+namespace Scaleplan\Result;
 
 /**
  * Класс результатов в виде HTML-страниц
  *
- * Class HTMLResultItem
- * @package avtomon
+ * Class HTMLResult
+ *
+ * @package Scaleplan\Result
  */
-class HTMLResultItem extends AbstractResult
+class HTMLResult extends AbstractResult
 {
     /**
      * Конструктор

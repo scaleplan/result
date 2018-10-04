@@ -1,14 +1,15 @@
 <?php
 
-namespace avtomon;
+namespace Scaleplan\Result;
 
 /**
  * Базовый класс результата
  *
  * Class AbstractResult
- * @package avtomon
+ *
+ * @package Scaleplan\Result
  */
-abstract class AbstractResult implements IResultInterface
+abstract class AbstractResult implements ResultInterface
 {
     /**
      * @var mixed

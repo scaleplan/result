@@ -1,14 +1,15 @@
 <?php
 
-namespace avtomon;
+namespace Scaleplan\Result;
 
 /**
  * Интерфейс общий для всех типов результатов
  *
- * Interface IResultInterface
- * @package avtomon
+ * Interface ResultInterface
+ *
+ * @package Scaleplan\Result
  */
-interface IResultInterface
+interface ResultInterface
 {
     /**
      * Получение результата

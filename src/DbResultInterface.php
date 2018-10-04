@@ -1,15 +1,21 @@
 <?php
 
-namespace avtomon;
+namespace Scaleplan\Result;
 
 /**
  * Интерфейс результатов запросов к БД
  *
- * Interface IDbResultInterface
- * @package avtomon
+ * Interface DbResultInterface
+ *
+ * @package Scaleplan\Result
  */
-interface IDbResultInterface
+interface DbResultInterface
 {
+    /**
+     * Get result
+     *
+     * @return mixed
+     */
     public function getResult();
 
     /**
@@ -41,7 +47,7 @@ interface IDbResultInterface
     public function getResultId();
 
     /**
-     * If result is assiciative array, returns first field from first record of result
+     * If result is associative array, returns first field from first record of result
      *
      * @return mixed
      */

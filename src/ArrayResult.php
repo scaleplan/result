@@ -1,24 +1,15 @@
 <?php
 
-namespace avtomon;
-
-/**
- * Класс ошибок
- *
- * Class ArrayResultItemException
- * @package avtomon
- */
-class ArrayResultItemException extends CustomException
-{
-}
+namespace Scaleplan\Result;
 
 /**
  * Класс результат типа Массив
  *
- * Class ArrayResultItem
- * @package avtomon
+ * Class ArrayResult
+ *
+ * @package Scaleplan\Result
  */
-class ArrayResultItem extends AbstractResult
+class ArrayResult extends AbstractResult
 {
     /**
      * Конструктор
