@@ -5,7 +5,7 @@ Generalization of result types.
 #### Installation
 
 ``
-composer reqire avtomon/resultitem
+composer reqire scaleplan/result
 ``
 
 <br>

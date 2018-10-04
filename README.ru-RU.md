@@ -5,7 +5,7 @@
 #### Установка
 
 ``
-composer reqire avtomon/resultitem
+composer reqire scaleplan/result
 ``
 
 <br>

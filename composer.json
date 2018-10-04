@@ -3,7 +3,7 @@
     "description": "Interface and classes to unification response of data requests",
     "autoload": {
         "psr-4": {
-            "avtomon\\": "src/"
+            "Scaleplan\\Result\\": "src/"
         }
     },
     "require": {
