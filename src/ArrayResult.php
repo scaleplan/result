@@ -2,6 +2,8 @@
 
 namespace Scaleplan\Result;
 
+use Scaleplan\Helpers\NameConverter;
+
 /**
  * Класс результат типа Массив
  *
@@ -9,7 +11,7 @@ namespace Scaleplan\Result;
  *
  * @package Scaleplan\Result
  */
-class ArrayResult extends AbstractResult
+class ArrayResult extends AbstractResult implements ArrayResultInterface
 {
     /**
      * Конструктор
@@ -22,21 +24,11 @@ class ArrayResult extends AbstractResult
     }
 
     /**
-     * Геттер для результата
-     *
-     * @return array
-     */
-    public function getResult(): ?array
-    {
-        return $this->getArrayResult();
-    }
-
-    /**
      * Установить результат
      *
      * @param null|array $result - результат
      */
-    public function setResult(?array $result): void
+    public function setResult(?array $result) : void
     {
         if ($result === null) {
             $this->result = $result;
@@ -51,7 +43,7 @@ class ArrayResult extends AbstractResult
      *
      * @return array
      */
-    public function getArrayResult(): ?array
+    public function getArrayResult() : ?array
     {
         return $this->result;
     }
@@ -61,7 +53,7 @@ class ArrayResult extends AbstractResult
      *
      * @return null|string
      */
-    public function getJsonResult(): ?string
+    public function getJsonResult() : ?string
     {
         if ($this->result === null) {
             return null;
@@ -75,18 +67,61 @@ class ArrayResult extends AbstractResult
      *
      * @return string
      */
-    public function getStringResult(): ?string
+    public function getStringResult() : ?string
     {
         return $this->getJsonResult();
     }
 
     /**
-     * Возвратить результат в виде объекта
-     *
-     * @return null|\object
+     * @return object
      */
-    public function getObjectResult(): ?object
+    protected static function getObjectTemplate() : object
     {
-        return $this->result === null ? null : (object) $this->result;
+        static $object;
+        if ($object === null) {
+            $object = new class
+            {
+                public function __get($name)
+                {
+                    return null;
+                }
+            };
+        }
+
+        return $object;
+    }
+
+    /**
+     * @param array $array
+     *
+     * @return object
+     */
+    protected static function arrayToObject(?array $array) : object
+    {
+        if ($array === null) {
+            return null;
+        }
+
+        $object = static::getObjectTemplate();
+        foreach ($array as $property => $value) {
+            $newPropertyName = NameConverter::snakeCaseToLowerCamelCase($property);
+            $object->$newPropertyName = $value;
+        }
+
+        return $object;
+    }
+
+    /**
+     * @return null|object
+     */
+    public function getObjectResult() : ?object
+    {
+        if ($this->getArrayResult() === null) {
+            return null;
+        }
+
+        return array_map(function(array $row) {
+            return static::arrayToObject($row);
+        }, $this->getArrayResult());
     }
 }

@@ -52,7 +52,7 @@ abstract class AbstractResult implements ResultInterface
      *
      * @return string
      */
-    public function __toString(): string
+    public function __toString(): ?string
     {
         return (string) $this->getStringResult();
     }

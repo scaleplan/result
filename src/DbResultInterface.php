@@ -2,61 +2,52 @@
 
 namespace Scaleplan\Result;
 
+use Scaleplan\Result\Exceptions\ResultException;
+
 /**
- * Интерфейс результатов запросов к БД
+ * Класс результата запроса к БД
  *
  * Interface DbResultInterface
  *
  * @package Scaleplan\Result
  */
-interface DbResultInterface
+interface DbResultInterface extends ArrayResultInterface
 {
     /**
-     * Get result
+     * Установить результат
      *
-     * @return mixed
+     * @param $result - результат
+     * @param string $prefix - префикс полей результата
+     *
+     * @throws ResultException
      */
-    public function getResult();
+    public function setResult(?array $result, string $prefix = '') : void;
 
     /**
-     * Get result as array
+     * Вернуть первую запись результата
      *
-     * @return mixed
+     * @return array
      */
-    public function getArrayResult(): ?array;
+    public function getFirstResult() : ?array;
 
     /**
-     * Get result as JSON
+     * Вернуть поле id первой записи результата
      *
-     * @return mixed
-     */
-    public function getJsonResult(): ?string;
-
-    /**
-     * If result is array, returns first element of result array
-     *
-     * @return mixed
-     */
-    public function getFirstResult();
-
-    /**
-     * If result is assiciative array, returns id field from first record of result
-     *
-     * @return mixed
+     * @return mixed|null
      */
     public function getResultId();
 
     /**
-     * If result is associative array, returns first field from first record of result
+     * Вернуть первое поле первой записи результата
      *
-     * @return mixed
+     * @return null
      */
     public function getResultFirstField();
 
     /**
-     * get result as string
+     * Возвратить результат в виде объекта
      *
-     * @return mixed
+     * @return null|\object
      */
-    public function getStringResult();
+    public function getFirstObjectResult() : ?object;
 }

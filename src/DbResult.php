@@ -11,21 +11,8 @@ use Scaleplan\Result\Exceptions\ResultException;
  *
  * @package Scaleplan\Result
  */
-class DbResult extends ArrayResult
+class DbResult extends ArrayResult implements DbResultInterface
 {
-    /**
-     * Конструктор
-     *
-     * @param array|null $result - результат
-     * @param string $prefix - префикс полей результата
-     *
-     * @throws ResultException
-     */
-    public function __construct(?array $result, string $prefix = '')
-    {
-        $this->setResult($result, $prefix);
-    }
-
     /**
      * Установить результат
      *
@@ -34,14 +21,14 @@ class DbResult extends ArrayResult
      *
      * @throws ResultException
      */
-    public function setResult(?array $result, string $prefix = ''): void
+    public function setResult(?array $result, string $prefix = '') : void
     {
         if ($result === null) {
             $this->result = $result;
             return;
         }
 
-        if (!empty($result[0]) &&  !\is_array($result[0])) {
+        if (!empty($result[0]) && !\is_array($result[0])) {
             throw new ResultException('Входной массив не является результатом запроса к РСУБД');
         }
 
@@ -62,7 +49,7 @@ class DbResult extends ArrayResult
      *
      * @return array
      */
-    public function getFirstResult(): ?array
+    public function getFirstResult() : ?array
     {
         return !empty($this->result[0]) && \is_array($this->result[0]) ? $this->result[0] : null;
     }
@@ -96,10 +83,8 @@ class DbResult extends ArrayResult
      *
      * @return null|\object
      */
-    public function getObjectResult(): ?object
+    public function getFirstObjectResult() : ?object
     {
-        $result = $this->getFirstResult();
-
-        return $result === null ? null : (object) $this->getFirstResult();
+        return static::arrayToObject($this->getFirstResult());
     }
 }

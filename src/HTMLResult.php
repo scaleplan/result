@@ -9,7 +9,7 @@ namespace Scaleplan\Result;
  *
  * @package Scaleplan\Result
  */
-class HTMLResult extends AbstractResult
+class HTMLResult extends AbstractResult implements HTMLResultInterface
 {
     /**
      * Конструктор
