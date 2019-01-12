@@ -14,6 +14,19 @@ use Scaleplan\Result\Exceptions\ResultException;
 class DbResult extends ArrayResult implements DbResultInterface
 {
     /**
+     * DbResult constructor.
+     *
+     * @param array|null $result
+     * @param string $prefix
+     *
+     * @throws ResultException
+     */
+    public function __construct(?array $result, string $prefix = '')
+    {
+        $this->setResult($result, $prefix);
+    }
+
+    /**
      * Установить результат
      *
      * @param $result - результат
