@@ -56,7 +56,7 @@ class HTMLResult extends AbstractResult implements HTMLResultInterface
      *
      * @return null|\object
      */
-    public function getObjectResult(): ?object
+    public function getObjectResult(): ?\object
     {
         return null;
     }

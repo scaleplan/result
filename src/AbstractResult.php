@@ -34,20 +34,6 @@ abstract class AbstractResult implements ResultInterface
     abstract public function getStringResult(): ?string;
 
     /**
-     * Возвратить результат в виде массива
-     *
-     * @return array|null
-     */
-    abstract public function getArrayResult(): ?array;
-
-    /**
-     * Возвратить результат в виде объекта
-     *
-     * @return null|\object
-     */
-    abstract public function getObjectResult(): ?object;
-
-    /**
      * Вернуть объект результата в виде строки
      *
      * @return string

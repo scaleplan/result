@@ -38,9 +38,4 @@ interface ArrayResultInterface extends ResultInterface
      * @return string
      */
     public function getStringResult() : ?string;
-
-    /**
-     * @return null|object
-     */
-    public function getObjectResult() : ?object;
 }

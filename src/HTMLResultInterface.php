@@ -37,5 +37,5 @@ interface HTMLResultInterface extends ResultInterface
      *
      * @return null|\object
      */
-    public function getObjectResult() : ?object;
+    public function getObjectResult() : ?\object;
 }

@@ -26,20 +26,6 @@ interface ResultInterface
     public function getStringResult(): ?string;
 
     /**
-     * Возвратить результат в виде массива
-     *
-     * @return array|null
-     */
-    public function getArrayResult(): ?array;
-
-    /**
-     * Возвратить результат в виде объекта
-     *
-     * @return null|\object
-     */
-    public function getObjectResult(): ?object;
-
-    /**
      * Вернуть объект результата в виде строки
      *
      * @return string

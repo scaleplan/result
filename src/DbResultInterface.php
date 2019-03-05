@@ -2,6 +2,7 @@
 
 namespace Scaleplan\Result;
 
+use Scaleplan\Model\Model;
 use Scaleplan\Result\Exceptions\ResultException;
 
 /**
@@ -45,9 +46,14 @@ interface DbResultInterface extends ArrayResultInterface
     public function getResultFirstField();
 
     /**
+     * @return null|array
+     */
+    public function getObjectResult() : ?array;
+
+    /**
      * Возвратить результат в виде объекта
      *
      * @return null|\object
      */
-    public function getFirstObjectResult() : ?object;
+    public function getFirstObjectResult() : ?Model;
 }

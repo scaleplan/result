@@ -2,8 +2,6 @@
 
 namespace Scaleplan\Result;
 
-use Scaleplan\Helpers\NameConverter;
-
 /**
  * Класс результат типа Массив
  *
@@ -70,58 +68,5 @@ class ArrayResult extends AbstractResult implements ArrayResultInterface
     public function getStringResult() : ?string
     {
         return $this->getJsonResult();
-    }
-
-    /**
-     * @return object
-     */
-    protected static function getObjectTemplate() : object
-    {
-        static $object;
-        if ($object === null) {
-            $object = new class
-            {
-                public function __get($name)
-                {
-                    return null;
-                }
-            };
-        }
-
-        return $object;
-    }
-
-    /**
-     * @param array $array
-     *
-     * @return object
-     */
-    protected static function arrayToObject(?array $array) : object
-    {
-        if ($array === null) {
-            return null;
-        }
-
-        $object = static::getObjectTemplate();
-        foreach ($array as $property => $value) {
-            $newPropertyName = NameConverter::snakeCaseToLowerCamelCase($property);
-            $object->$newPropertyName = $value;
-        }
-
-        return $object;
-    }
-
-    /**
-     * @return null|object
-     */
-    public function getObjectResult() : ?object
-    {
-        if ($this->getArrayResult() === null) {
-            return null;
-        }
-
-        return array_map(function(array $row) {
-            return static::arrayToObject($row);
-        }, $this->getArrayResult());
     }
 }

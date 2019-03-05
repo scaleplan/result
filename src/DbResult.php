@@ -2,6 +2,8 @@
 
 namespace Scaleplan\Result;
 
+use Scaleplan\Helpers\NameConverter;
+use Scaleplan\Model\Model;
 use Scaleplan\Result\Exceptions\ResultException;
 
 /**
@@ -23,6 +25,7 @@ class DbResult extends ArrayResult implements DbResultInterface
      */
     public function __construct(?array $result, string $prefix = '')
     {
+        parent::__construct($result);
         $this->setResult($result, $prefix);
     }
 
@@ -92,11 +95,45 @@ class DbResult extends ArrayResult implements DbResultInterface
     }
 
     /**
+     * @param array $array
+     *
+     * @return Model
+     */
+    protected static function arrayToObject(?array $array) : ?Model
+    {
+        if ($array === null) {
+            return null;
+        }
+
+        $propertyArray = [];
+        foreach ($array as $property => $value) {
+            $newPropertyName = NameConverter::snakeCaseToLowerCamelCase($property);
+            $propertyArray[$newPropertyName] = $value;
+        }
+
+        return new Model($propertyArray);
+    }
+
+    /**
+     * @return null|array
+     */
+    public function getObjectResult() : ?array
+    {
+        if ($this->getArrayResult() === null) {
+            return null;
+        }
+
+        return array_map(function(array $row) {
+            return static::arrayToObject($row);
+        }, $this->getArrayResult());
+    }
+
+    /**
      * Возвратить результат в виде объекта
      *
-     * @return null|\object
+     * @return null|Model
      */
-    public function getFirstObjectResult() : ?object
+    public function getFirstObjectResult() : ?Model
     {
         return static::arrayToObject($this->getFirstResult());
     }
