@@ -2,6 +2,8 @@
 
 namespace Scaleplan\Result;
 
+use Scaleplan\Result\Interfaces\ResultInterface;
+
 /**
  * Базовый класс результата
  *

@@ -2,6 +2,8 @@
 
 namespace Scaleplan\Result;
 
+use Scaleplan\Result\Interfaces\HTMLResultInterface;
+
 /**
  * Класс результатов в виде HTML-страниц
  *

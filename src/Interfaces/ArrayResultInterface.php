@@ -1,6 +1,6 @@
 <?php
 
-namespace Scaleplan\Result;
+namespace Scaleplan\Result\Interfaces;
 
 /**
  * Интерфейс результата типа Массив

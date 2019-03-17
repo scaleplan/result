@@ -1,6 +1,6 @@
 <?php
 
-namespace Scaleplan\Result;
+namespace Scaleplan\Result\Interfaces;
 
 use Scaleplan\Model\Model;
 use Scaleplan\Result\Exceptions\ResultException;
@@ -41,7 +41,7 @@ interface DbResultInterface extends ArrayResultInterface
     /**
      * Вернуть первое поле первой записи результата
      *
-     * @return null
+     * @return mixed
      */
     public function getResultFirstField();
 

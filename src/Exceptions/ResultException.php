@@ -18,8 +18,8 @@ class ResultException extends \Exception
      * @param int $code
      * @param \Throwable|null $previous
      */
-    public function __construct(string $message = "", int $code = 0, \Throwable $previous = null)
+    public function __construct(\string $message = '', \int $code = 0, \Throwable $previous = null)
     {
-        parent::__construct($message ?? static::MESSAGE, $code, $previous);
+        parent::__construct($message ?: static::MESSAGE, $code, $previous);
     }
 }

@@ -5,6 +5,7 @@ namespace Scaleplan\Result;
 use Scaleplan\Helpers\NameConverter;
 use Scaleplan\Model\Model;
 use Scaleplan\Result\Exceptions\ResultException;
+use Scaleplan\Result\Interfaces\DbResultInterface;
 
 /**
  * Класс результата запроса к БД
@@ -83,7 +84,7 @@ class DbResult extends ArrayResult implements DbResultInterface
     /**
      * Вернуть первое поле первой записи результата
      *
-     * @return null
+     * @return mixed
      */
     public function getResultFirstField()
     {
