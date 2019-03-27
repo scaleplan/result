@@ -53,7 +53,7 @@ interface DbResultInterface extends ArrayResultInterface
     /**
      * Возвратить результат в виде объекта
      *
-     * @return null|\object
+     * @return null|object
      */
     public function getFirstObjectResult() : ?Model;
 }
