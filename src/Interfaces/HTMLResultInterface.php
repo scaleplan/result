@@ -12,6 +12,13 @@ namespace Scaleplan\Result\Interfaces;
 interface HTMLResultInterface extends ResultInterface
 {
     /**
+     * Конструктор
+     *
+     * @param mixed $result
+     */
+    public function __construct($result);
+
+    /**
      * Установить значение результата
      *
      * @param $result - значение результата
