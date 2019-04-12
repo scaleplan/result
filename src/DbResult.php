@@ -124,7 +124,7 @@ class DbResult extends ArrayResult implements DbResultInterface
             return null;
         }
 
-        return array_map(function(array $row) {
+        return array_map(static function(array $row) {
             return static::arrayToObject($row);
         }, $this->getArrayResult());
     }
