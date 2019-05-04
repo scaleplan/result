@@ -116,7 +116,7 @@ class DbResult extends ArrayResult implements DbResultInterface
     }
 
     /**
-     * @return null|array
+     * @return null|Model[]
      */
     public function getObjectResult() : ?array
     {

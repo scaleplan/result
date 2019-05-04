@@ -46,14 +46,14 @@ interface DbResultInterface extends ArrayResultInterface
     public function getResultFirstField();
 
     /**
-     * @return null|array
+     * @return null|Model[]
      */
     public function getObjectResult() : ?array;
 
     /**
      * Возвратить результат в виде объекта
      *
-     * @return null|object
+     * @return null|Model
      */
     public function getFirstObjectResult() : ?Model;
 }
