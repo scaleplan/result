@@ -10,6 +10,7 @@ namespace Scaleplan\Result\Exceptions;
 class ResultException extends \Exception
 {
     public const MESSAGE = 'Result error.';
+    public const CODE = 500;
 
     /**
      * ResultException constructor.
@@ -20,6 +21,6 @@ class ResultException extends \Exception
      */
     public function __construct(string $message = '', int $code = 0, \Throwable $previous = null)
     {
-        parent::__construct($message ?: static::MESSAGE, $code, $previous);
+        parent::__construct($message ?: static::MESSAGE, $code ?: static::CODE, $previous);
     }
 }
