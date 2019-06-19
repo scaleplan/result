@@ -56,4 +56,9 @@ interface DbResultInterface extends ArrayResultInterface
      * @return null|Model
      */
     public function getFirstObjectResult() : ?Model;
+
+    /**
+     * @param string|null $modelClass
+     */
+    public function setModelClass(?string $modelClass) : void;
 }

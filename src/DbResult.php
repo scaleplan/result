@@ -4,6 +4,7 @@ namespace Scaleplan\Result;
 
 use Scaleplan\Helpers\NameConverter;
 use Scaleplan\Model\Model;
+use Scaleplan\Result\Exceptions\ClassIsNotModelException;
 use Scaleplan\Result\Exceptions\ResultException;
 use Scaleplan\Result\Interfaces\DbResultInterface;
 
@@ -17,28 +18,41 @@ use Scaleplan\Result\Interfaces\DbResultInterface;
 class DbResult extends ArrayResult implements DbResultInterface
 {
     /**
+     * @var string|null
+     */
+    protected $modelClass;
+
+    /**
      * DbResult constructor.
      *
      * @param array|null $result
-     * @param string $prefix
+     * @param string|null $prefix
      *
      * @throws ResultException
      */
-    public function __construct(?array $result, string $prefix = '')
+    public function __construct(?array $result, string $prefix = null)
     {
         parent::__construct($result);
         $this->setResult($result, $prefix);
     }
 
     /**
+     * @param string|null $modelClass
+     */
+    public function setModelClass(?string $modelClass) : void
+    {
+        $this->modelClass = $modelClass;
+    }
+
+    /**
      * Установить результат
      *
      * @param $result - результат
-     * @param string $prefix - префикс полей результата
+     * @param string|null $prefix - префикс полей результата
      *
      * @throws ResultException
      */
-    public function setResult(?array $result, string $prefix = '') : void
+    public function setResult(?array $result, string $prefix = null) : void
     {
         if ($result === null) {
             $this->result = $result;
@@ -96,11 +110,13 @@ class DbResult extends ArrayResult implements DbResultInterface
     }
 
     /**
-     * @param array $array
+     * @param array|null $array
      *
-     * @return Model
+     * @return Model|null
+     *
+     * @throws ClassIsNotModelException
      */
-    protected static function arrayToObject(?array $array) : ?Model
+    protected function arrayToObject(?array $array) : ?Model
     {
         if ($array === null) {
             return null;
@@ -110,6 +126,14 @@ class DbResult extends ArrayResult implements DbResultInterface
         foreach ($array as $property => $value) {
             $newPropertyName = NameConverter::snakeCaseToLowerCamelCase($property);
             $propertyArray[$newPropertyName] = $value;
+        }
+
+        if (!empty($this->modelClass)) {
+            if (!is_subclass_of($this->modelClass, Model::class)) {
+                throw new ClassIsNotModelException();
+            }
+
+            return new $this->modelClass($propertyArray);
         }
 
         return new Model($propertyArray);
@@ -125,17 +149,19 @@ class DbResult extends ArrayResult implements DbResultInterface
         }
 
         return array_map(static function(array $row) {
-            return static::arrayToObject($row);
+            return $this->arrayToObject($row);
         }, $this->getArrayResult());
     }
 
     /**
      * Возвратить результат в виде объекта
      *
-     * @return null|Model
+     * @return Model|null
+     *
+     * @throws ClassIsNotModelException
      */
     public function getFirstObjectResult() : ?Model
     {
-        return static::arrayToObject($this->getFirstResult());
+        return $this->arrayToObject($this->getFirstResult());
     }
 }
