@@ -38,4 +38,9 @@ interface ArrayResultInterface extends ResultInterface
      * @return string
      */
     public function getStringResult() : ?string;
+
+    /**
+     * @param array $record
+     */
+    public function addRecord(array $record) : void;
 }

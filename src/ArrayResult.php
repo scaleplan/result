@@ -71,4 +71,13 @@ class ArrayResult extends AbstractResult implements ArrayResultInterface
     {
         return $this->getJsonResult();
     }
+
+    /**
+     * @param array $record
+     */
+    public function addRecord(array $record) : void
+    {
+        $this->result = $this->result ?? [];
+        $this->result[] = $record;
+    }
 }
