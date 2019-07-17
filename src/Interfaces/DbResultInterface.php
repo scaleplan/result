@@ -61,4 +61,11 @@ interface DbResultInterface extends ArrayResultInterface
      * @param string|null $modelClass
      */
     public function setModelClass(?string $modelClass) : void;
+
+    /**
+     * @param string $column
+     *
+     * @return array|null
+     */
+    public function getColumn(string $column) : ?array;
 }

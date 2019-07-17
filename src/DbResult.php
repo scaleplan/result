@@ -181,4 +181,18 @@ class DbResult extends ArrayResult implements DbResultInterface
     {
         return $this->arrayToObject($this->getFirstResult());
     }
+
+    /**
+     * @param string $column
+     *
+     * @return array|null
+     */
+    public function getColumn(string $column) : ?array
+    {
+        if (null === $this->getResult()) {
+            return null;
+        }
+
+        return array_column($this->getResult(), $column);
+    }
 }
