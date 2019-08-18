@@ -2,10 +2,6 @@
 
 namespace Scaleplan\Result;
 
-use Scaleplan\Helpers\NameConverter;
-use Scaleplan\Model\Model;
-use Scaleplan\Result\Exceptions\ClassIsNotModelException;
-use Scaleplan\Result\Exceptions\PropertyNotFoundException;
 use Scaleplan\Result\Exceptions\ResultException;
 use function Scaleplan\Translator\translate;
 
