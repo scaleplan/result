@@ -80,4 +80,12 @@ class ArrayResult extends AbstractResult implements ArrayResultInterface
         $this->result = $this->result ?? [];
         $this->result[] = $record;
     }
+
+    /**
+     * @return int
+     */
+    public function count() : int
+    {
+        return count($this->getArrayResult());
+    }
 }
