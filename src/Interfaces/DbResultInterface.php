@@ -68,4 +68,10 @@ interface DbResultInterface extends ArrayResultInterface
      * @return array|null
      */
     public function getColumn(string $column) : ?array;
+
+    /**
+     * @param array $columns
+     * @param string $locale
+     */
+    public function setDateFormatting(array $columns, string $locale) : void;
 }
