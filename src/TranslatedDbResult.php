@@ -3,6 +3,7 @@
 namespace Scaleplan\Result;
 
 use Scaleplan\Result\Exceptions\ResultException;
+use Scaleplan\Result\Interfaces\TranslatedDbResultInterface;
 use function Scaleplan\Translator\translate;
 
 /**
@@ -12,7 +13,7 @@ use function Scaleplan\Translator\translate;
  *
  * @package Scaleplan\Result
  */
-class TranslatedDbResult extends DbResult
+class TranslatedDbResult extends DbResult implements TranslatedDbResultInterface
 {
     public const TRANSLATE_LABEL_PATTERN = '/to_translate_([a-z]+)_/';
 
@@ -36,7 +37,7 @@ class TranslatedDbResult extends DbResult
             return;
         }
 
-        $nameString = \implode(',', \array_keys($this->result));
+        $nameString = \implode(',', \array_keys($this->result[0]));
         if (!\preg_match(static::TRANSLATE_LABEL_PATTERN, $nameString, $matches)) {
             return;
         }

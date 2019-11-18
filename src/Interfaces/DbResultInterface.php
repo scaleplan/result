@@ -3,26 +3,26 @@
 namespace Scaleplan\Result\Interfaces;
 
 use Scaleplan\Model\Model;
-use Scaleplan\Result\Exceptions\ResultException;
 
 /**
- * Класс результата запроса к БД
- *
  * Interface DbResultInterface
  *
- * @package Scaleplan\Result
+ * @package Scaleplan\Result\Interfaces
  */
 interface DbResultInterface extends ArrayResultInterface
 {
     /**
+     * @param string|null $modelClass
+     */
+    public function setModelClass(?string $modelClass) : void;
+
+    /**
      * Установить результат
      *
      * @param $result - результат
-     * @param string $prefix - префикс полей результата
-     *
-     * @throws ResultException
+     * @param string|null $prefix - префикс полей результата
      */
-    public function setResult(?array $result, string $prefix = '') : void;
+    public function setResult(?array $result, string $prefix = null) : void;
 
     /**
      * Вернуть первую запись результата
@@ -46,6 +46,13 @@ interface DbResultInterface extends ArrayResultInterface
     public function getResultFirstField();
 
     /**
+     * @param string $name
+     *
+     * @return mixed
+     */
+    public function getFirstResultField(string $name);
+
+    /**
      * @return null|Model[]
      */
     public function getObjectResult() : ?array;
@@ -53,14 +60,9 @@ interface DbResultInterface extends ArrayResultInterface
     /**
      * Возвратить результат в виде объекта
      *
-     * @return null|Model
+     * @return Model|null
      */
     public function getFirstObjectResult() : ?Model;
-
-    /**
-     * @param string|null $modelClass
-     */
-    public function setModelClass(?string $modelClass) : void;
 
     /**
      * @param string $column

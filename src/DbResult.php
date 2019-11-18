@@ -33,7 +33,6 @@ class DbResult extends ArrayResult implements DbResultInterface
      */
     public function __construct(?array $result, string $prefix = null)
     {
-        parent::__construct($result);
         $this->setResult($result, $prefix);
     }
 
