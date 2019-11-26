@@ -33,7 +33,7 @@ class TranslatedDbResult extends DbResult implements TranslatedDbResultInterface
     {
         parent::setResult($result, $prefix);
 
-        if (!\is_array($this->result)) {
+        if (!$this->result || !\is_array($this->result)) {
             return;
         }
 
