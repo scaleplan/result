@@ -53,6 +53,12 @@ interface DbResultInterface extends ArrayResultInterface
     public function getFirstResultField(string $name);
 
     /**
+     * @param string $name
+     * @param $value
+     */
+    public function setFirstResultField(string $name, $value) : void ;
+
+    /**
      * @return null|Model[]
      */
     public function getObjectResult() : ?array;

@@ -5,6 +5,7 @@ namespace Scaleplan\Result;
 use Scaleplan\Helpers\NameConverter;
 use Scaleplan\Model\Model;
 use Scaleplan\Result\Exceptions\ClassIsNotModelException;
+use Scaleplan\Result\Exceptions\FirstResultNotArrayException;
 use Scaleplan\Result\Exceptions\PropertyNotFoundException;
 use Scaleplan\Result\Exceptions\ResultException;
 use Scaleplan\Result\Interfaces\DbResultInterface;
@@ -123,6 +124,22 @@ class DbResult extends ArrayResult implements DbResultInterface
         }
 
         throw new PropertyNotFoundException($name);
+    }
+
+    /**
+     * @param string $name
+     * @param $value
+     *
+     * @throws FirstResultNotArrayException
+     */
+    public function setFirstResultField(string $name, $value) : void
+    {
+        if (!empty($this->result[0]) && is_array($this->result[0])) {
+            $this->result[0][$name] = $value;
+            return;
+        }
+
+        throw new FirstResultNotArrayException($name);
     }
 
     /**
