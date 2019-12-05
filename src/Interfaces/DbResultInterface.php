@@ -82,4 +82,10 @@ interface DbResultInterface extends ArrayResultInterface
      * @param string $locale
      */
     public function setDateFormatting(array $columns, string $locale) : void;
+
+    /**
+     * @param array $columns
+     * @param string $locale
+     */
+    public function setDateTimeFormatting(array $columns, string $locale) : void;
 }

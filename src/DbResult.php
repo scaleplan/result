@@ -230,4 +230,23 @@ class DbResult extends ArrayResult implements DbResultInterface
         }
         unset($record, $column);
     }
+
+    /**
+     * @param array $columns
+     * @param string $locale
+     *
+     * @throws \Exception
+     */
+    public function setDateTimeFormatting(array $columns, string $locale) : void
+    {
+        $formatter = new \IntlDateFormatter($locale, \IntlDateFormatter::SHORT, \IntlDateFormatter::SHORT);
+        foreach ($this->result as &$record) {
+            foreach ($columns as &$column) {
+                if (!empty($record[$column])) {
+                    $record[$column] = $formatter->format(new \DateTimeImmutable($record[$column]));
+                }
+            }
+        }
+        unset($record, $column);
+    }
 }
