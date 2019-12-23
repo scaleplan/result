@@ -155,21 +155,21 @@ class DbResult extends ArrayResult implements DbResultInterface
             return null;
         }
 
-        $propertyArray = [];
-        foreach ($array as $property => $value) {
-            $newPropertyName = NameConverter::snakeCaseToLowerCamelCase($property);
-            $propertyArray[$newPropertyName] = $value;
-        }
+//        $propertyArray = [];
+//        foreach ($array as $property => $value) {
+//            $newPropertyName = NameConverter::snakeCaseToLowerCamelCase($property);
+//            $propertyArray[$newPropertyName] = $value;
+//        }
 
         if (!empty($this->modelClass)) {
             if (!is_subclass_of($this->modelClass, Model::class)) {
                 throw new ClassIsNotModelException();
             }
 
-            return new $this->modelClass($propertyArray);
+            return new $this->modelClass($array);
         }
 
-        return new Model($propertyArray);
+        return new Model($array);
     }
 
     /**
