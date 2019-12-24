@@ -1,8 +1,8 @@
 <?php
+declare(strict_types=1);
 
 namespace Scaleplan\Result;
 
-use Scaleplan\Helpers\NameConverter;
 use Scaleplan\Model\Model;
 use Scaleplan\Result\Exceptions\ClassIsNotModelException;
 use Scaleplan\Result\Exceptions\FirstResultNotArrayException;
@@ -181,7 +181,7 @@ class DbResult extends ArrayResult implements DbResultInterface
             return null;
         }
 
-        return array_map(static function(array $row) {
+        return array_map(static function (array $row) {
             return $this->arrayToObject($row);
         }, $this->getArrayResult());
     }
