@@ -30,11 +30,6 @@ class ArrayResult extends AbstractResult implements ArrayResultInterface
      */
     public function setResult(?array $result) : void
     {
-        if ($result === null) {
-            $this->result = $result;
-            return;
-        }
-
         $this->result = $result;
     }
 
