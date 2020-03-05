@@ -45,6 +45,11 @@ interface ArrayResultInterface extends ResultInterface
     public function addRecord(array $record) : void;
 
     /**
+     * @param array $record
+     */
+    public function addFirstRecord(array $record) : void;
+
+    /**
      * @return int
      */
     public function count() : int;

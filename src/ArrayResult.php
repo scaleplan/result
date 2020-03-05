@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 
 namespace Scaleplan\Result;
 
@@ -18,7 +19,7 @@ class ArrayResult extends AbstractResult implements ArrayResultInterface
      *
      * @param array|null $result - результат
      */
-    public function __construct(?array $result)
+    public function __construct(?array $result = [])
     {
         $this->setResult($result);
     }
@@ -74,6 +75,15 @@ class ArrayResult extends AbstractResult implements ArrayResultInterface
     {
         $this->result = $this->result ?? [];
         $this->result[] = $record;
+    }
+
+    /**
+     * @param array $record
+     */
+    public function addFirstRecord(array $record) : void
+    {
+        $this->result = $this->result ?? [];
+        array_unshift($this->result, $record);
     }
 
     /**
