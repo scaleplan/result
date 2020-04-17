@@ -7,7 +7,7 @@ TRANS_PATH="/var/www/trans"
 CURRENT_PATH="$3"
 
 mkdir -p "$DESC_DIR"
-cp -r $SRC_DIR/* $DESC_DIR/
+cp -r ${SRC_DIR}/* ${DESC_DIR}/
 
 find "$SRC_DIR/" -name '*.md' -type f -printf '%P\0' |
 while IFS= read -r -d '' file; do

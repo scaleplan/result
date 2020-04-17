@@ -93,4 +93,12 @@ class ArrayResult extends AbstractResult implements ArrayResultInterface
     {
         return count($this->getArrayResult());
     }
+
+    /**
+     * @param string $serialized
+     */
+    public function unserialize($serialized) : void
+    {
+        $this->setResult(json_decode($serialized, true));
+    }
 }

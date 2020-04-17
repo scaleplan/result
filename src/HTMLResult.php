@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 
 namespace Scaleplan\Result;
 
@@ -61,5 +62,13 @@ class HTMLResult extends AbstractResult implements HTMLResultInterface
     public function getObjectResult(): ?object
     {
         return null;
+    }
+
+    /**
+     * @param string $serialized
+     */
+    public function unserialize($serialized) : void
+    {
+        $this->setResult($serialized);
     }
 }
