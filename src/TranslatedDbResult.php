@@ -50,7 +50,7 @@ class TranslatedDbResult extends DbResult implements TranslatedDbResultInterface
                     continue;
                 }
 
-                $value = translate("{$matches[1]}.$value") ?? $value;
+                $value = translate("{$matches[1]}.$value") ?: $value;
             }
 
             unset($value);
