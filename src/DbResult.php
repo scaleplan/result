@@ -61,7 +61,7 @@ class DbResult extends ArrayResult implements DbResultInterface
         }
 
         if (!empty($result[0]) && !\is_array($result[0])) {
-            throw new ResultException('Входной массив не является результатом запроса к РСУБД');
+            throw new ResultException('Входной массив не является результатом запроса к РСУБД.');
         }
 
         if ($prefix) {

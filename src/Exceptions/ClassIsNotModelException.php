@@ -10,6 +10,6 @@ namespace Scaleplan\Result\Exceptions;
  */
 class ClassIsNotModelException extends ResultException
 {
-    public const MESSAGE = 'Class is not a model.';
+    public const MESSAGE = 'Класс не является классом модели.';
     public const CODE = 406;
 }

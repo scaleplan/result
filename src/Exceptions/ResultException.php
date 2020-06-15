@@ -10,7 +10,7 @@ namespace Scaleplan\Result\Exceptions;
  */
 class ResultException extends \Exception
 {
-    public const MESSAGE = 'Result error.';
+    public const MESSAGE = 'Ошибка результата.';
     public const CODE = 500;
 
     /**

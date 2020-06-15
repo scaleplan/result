@@ -10,7 +10,7 @@ namespace Scaleplan\Result\Exceptions;
  */
 class PropertyNotFoundException extends ResultException
 {
-    public const MESSAGE = 'Property :property not found.';
+    public const MESSAGE = 'Свойство :property не найдено.';
     public const CODE = 404;
 
     /**
