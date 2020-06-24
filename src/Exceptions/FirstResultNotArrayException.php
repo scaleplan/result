@@ -10,6 +10,6 @@ namespace Scaleplan\Result\Exceptions;
  */
 class FirstResultNotArrayException extends ResultException
 {
-    public const MESSAGE = 'Первая запись результата не является массивом.';
+    public const MESSAGE = 'result.first-record-must-be-array';
     public const CODE = 500;
 }

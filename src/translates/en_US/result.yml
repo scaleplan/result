@@ -1,0 +1,5 @@
+not-db-result: Input array must be result of database request execution.
+class-not-model: Class must be a model class.
+first-record-must-be-array: First result record must be array.
+property-not-found: Property :property not found.
+result-error: Result error.

@@ -9,6 +9,7 @@ use Scaleplan\Result\Exceptions\FirstResultNotArrayException;
 use Scaleplan\Result\Exceptions\PropertyNotFoundException;
 use Scaleplan\Result\Exceptions\ResultException;
 use Scaleplan\Result\Interfaces\DbResultInterface;
+use function Scaleplan\Translator\translate;
 
 /**
  * Класс результата запроса к БД
@@ -31,6 +32,11 @@ class DbResult extends ArrayResult implements DbResultInterface
      * @param string|null $prefix
      *
      * @throws ResultException
+     * @throws \ReflectionException
+     * @throws \Scaleplan\DependencyInjection\Exceptions\ContainerTypeNotSupportingException
+     * @throws \Scaleplan\DependencyInjection\Exceptions\DependencyInjectionException
+     * @throws \Scaleplan\DependencyInjection\Exceptions\ParameterMustBeInterfaceNameOrClassNameException
+     * @throws \Scaleplan\DependencyInjection\Exceptions\ReturnTypeMustImplementsInterfaceException
      */
     public function __construct(?array $result, string $prefix = null)
     {
@@ -52,6 +58,11 @@ class DbResult extends ArrayResult implements DbResultInterface
      * @param string|null $prefix - префикс полей результата
      *
      * @throws ResultException
+     * @throws \ReflectionException
+     * @throws \Scaleplan\DependencyInjection\Exceptions\ContainerTypeNotSupportingException
+     * @throws \Scaleplan\DependencyInjection\Exceptions\DependencyInjectionException
+     * @throws \Scaleplan\DependencyInjection\Exceptions\ParameterMustBeInterfaceNameOrClassNameException
+     * @throws \Scaleplan\DependencyInjection\Exceptions\ReturnTypeMustImplementsInterfaceException
      */
     public function setResult(?array $result, string $prefix = null) : void
     {
@@ -61,7 +72,7 @@ class DbResult extends ArrayResult implements DbResultInterface
         }
 
         if (!empty($result[0]) && !\is_array($result[0])) {
-            throw new ResultException('Входной массив не является результатом запроса к РСУБД.');
+            throw new ResultException(translate('result.not-db-result'));
         }
 
         if ($prefix) {
@@ -116,6 +127,11 @@ class DbResult extends ArrayResult implements DbResultInterface
      * @return mixed
      *
      * @throws PropertyNotFoundException
+     * @throws \ReflectionException
+     * @throws \Scaleplan\DependencyInjection\Exceptions\ContainerTypeNotSupportingException
+     * @throws \Scaleplan\DependencyInjection\Exceptions\DependencyInjectionException
+     * @throws \Scaleplan\DependencyInjection\Exceptions\ParameterMustBeInterfaceNameOrClassNameException
+     * @throws \Scaleplan\DependencyInjection\Exceptions\ReturnTypeMustImplementsInterfaceException
      */
     public function getFirstResultField(string $name)
     {

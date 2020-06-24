@@ -1,0 +1,5 @@
+not-db-result: Входной массив не является результатом запроса к РСУБД.
+class-not-model: Класс не является классом модели.
+first-record-must-be-array: Первая запись результата не является массивом.
+property-not-found: Свойство :property не найдено.
+result-error: Ошибка результата.
