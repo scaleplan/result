@@ -124,6 +124,16 @@ class DbResult extends ArrayResult implements DbResultInterface
     /**
      * @param string $name
      *
+     * @return bool
+     */
+    public function hasFirstResultField(string $name) : bool
+    {
+        return $this->getFirstResult() && array_key_exists($name, $this->getFirstResult());
+    }
+
+    /**
+     * @param string $name
+     *
      * @return mixed
      *
      * @throws PropertyNotFoundException
@@ -135,8 +145,8 @@ class DbResult extends ArrayResult implements DbResultInterface
      */
     public function getFirstResultField(string $name)
     {
-        if (($firstResult = $this->getFirstResult()) && array_key_exists($name, $firstResult)) {
-            return $firstResult[$name];
+        if ($this->hasFirstResultField($name)) {
+            return $this->getFirstResult()[$name];
         }
 
         throw new PropertyNotFoundException($name);
