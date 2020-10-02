@@ -41,7 +41,7 @@ abstract class AbstractResult implements ResultInterface, \Serializable
      *
      * @return string
      */
-    public function __toString() : ?string
+    public function __toString() : string
     {
         return (string)$this->getStringResult();
     }
